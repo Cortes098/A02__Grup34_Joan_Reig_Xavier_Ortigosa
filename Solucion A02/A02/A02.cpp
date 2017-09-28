@@ -21,6 +21,12 @@ struct node{
 	node* next{ this };
 };
 
+template <typename T>
+
+T fExample1(int valor)
+{
+	valor = 1;
+}
 
 int main()
 {
