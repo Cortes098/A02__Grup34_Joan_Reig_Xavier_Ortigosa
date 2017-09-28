@@ -16,22 +16,16 @@ C CExample2(T T1, T T2) {
 }
 
 template <typename T>
-struct node{
+struct node {
 	T info;
 	node* next{ this };
 };
 
-template <typename T>
-
-T fExample1(int valor)
-{
-	valor = 1;
-}
 
 int main()
 {
 
 	node<int> un{ 12 };
-    return 0;
+	return 0;
 }
 
