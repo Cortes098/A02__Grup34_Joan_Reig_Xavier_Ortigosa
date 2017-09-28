@@ -24,8 +24,14 @@ struct node {
 
 int main()
 {
+	//A
 
+	//B
+	
+	//C
 	node<int> un{ 12 };
+
+
 	return 0;
 }
 
