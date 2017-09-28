@@ -17,12 +17,9 @@ T fExample1(T argumento) {
 template <class T1, class T2>
 class CExample2
 {
-private:
-	std::vector<T1> aV;
 public:
+	std::vector<T1> aV;
 	T2 atributo;
-	CExample2();
-	~CExample2();
 };
 
 template <typename N>
@@ -50,12 +47,60 @@ private:
 		C1 info;
 		node *previous, *next;
 	};
+	node * first, *last;
+	int mida;
 public:
-	push(C1 valor1);
-	pop(C1 valor2);
-	C1 size();
-	SuperQueue();
-	~SuperQueue();
+	void push(C1 valor1){
+		if (last == first && first == nullptr)
+		{
+			node* buffer = new node{ valor1,nullptr, nullptr };
+			last = buffer;
+			first = last;
+			mida++;
+		}
+		else
+		{
+			node* buffer = new node{ valor1, nullptr, last };
+			last->next = buffer;
+			last = buffer;
+			mida++;
+		}
+	};
+	void pop(){
+		if (mida == 0) {
+			last = nullptr;
+			first = nullptr;
+			last = first;
+			mida--;
+		}
+
+		else {
+			first = first->next;
+			first->previous = nullptr;
+			mida--;
+
+	}
+	}
+	int size()
+	{
+		return mida;
+	}
+	SuperQueue(const SuperQueue &param)
+		: first{ param.first },
+		last{ param.last },
+		mida{ param.mida }
+	{
+	}
+	SuperQueue() 
+		: first{ nullptr },
+		last{ nullptr },
+		mida{ 0 }
+	{
+
+	}
+	~SuperQueue() {
+
+	}
 };
 
 
@@ -68,25 +113,23 @@ int main()
 	//B
 	CExample2<int, int> Nombre;
 	//C
-	node<int> un;
+	node<int> un{};
 
 //2
 	swapValues(12.0, 12.3);
 	swapValues(120, 123);
 
 //3
-
-
+	SuperQueue<int> nom;
+	nom.push(5);
+	nom.push(6);
+	nom.push(7);
+	nom.pop();
+	int mida = nom.size();
+	SuperQueue<int> dos(nom);
 
 	return 0;
 }
 
-template<class T1, class T2>
-CExample2<T1, T2>::CExample2()
-{
-}
 
-template<class T1, class T2>
-CExample2<T1, T2>::~CExample2()
-{
-}
+
